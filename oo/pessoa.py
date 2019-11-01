@@ -24,3 +24,8 @@ if __name__=='__main__':
 
     for filho in luciano.filhos:
         print(filho.nome)
+
+    del luciano.filhos #apaga atributo
+    luciano.sobrenome = 'Ramalho' #adiciona atributo dinamicamente
+    print(luciano.__dict__)
+    print(renzo.__dict__) #ve qual atributos tem
