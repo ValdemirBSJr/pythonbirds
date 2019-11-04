@@ -10,6 +10,17 @@ class Pessoa:
     def cumprimentar(self):
         return f'Olá {id(self)}'
 
+    #Para que um metodo independa do objeto que está sendo executado usa o decorator
+    @staticmethod
+    def metodo_estatico():
+        #funcao atrelada a classe. Não precisa fazer referencia ao obj
+        return 42
+
+    @classmethod
+    def nome_e_atributos_de_classe(cls):
+        #com esse decorator, temos acesso a classe que esta executando
+        return f'{cls} - olhos: {cls.olhos}'
+
 if __name__=='__main__':
     p = Pessoa()
     print(Pessoa.cumprimentar(p))
@@ -44,3 +55,6 @@ if __name__=='__main__':
 
     print(Pessoa.olhos)
     print(luciano.olhos)
+
+    print(Pessoa.metodo_estatico(), luciano.metodo_estatico())
+    print(Pessoa.nome_e_atributos_de_classe(), luciano.nome_e_atributos_de_classe())
