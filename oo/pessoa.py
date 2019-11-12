@@ -1,3 +1,7 @@
+#!/home/valdemir/.virtualenvs/k36/bin/python
+# -*- coding: utf-8 -*-
+#Author: Valdemir Bezerra
+
 class Pessoa:
 
     olhos = 2 #Atributo de classe/default -> Comum e igual a todos os objetos. Economiza memoria
@@ -21,6 +25,9 @@ class Pessoa:
         #com esse decorator, temos acesso a classe que esta executando
         return f'{cls} - olhos: {cls.olhos}'
 
+class Homem(Pessoa):
+    pass
+
 if __name__=='__main__':
     p = Pessoa()
     print(Pessoa.cumprimentar(p))
@@ -28,6 +35,7 @@ if __name__=='__main__':
     print(p.cumprimentar())
 
     renzo = Pessoa(nome='Renzo')
+    #renzo = Homem(nome='Renzo') #quando fazemos isso roda normal puq ele herdou de pessoa
     luciano = Pessoa(renzo, nome='Luciano')
     print(id(luciano))
     print(Pessoa.cumprimentar(luciano))
@@ -58,3 +66,10 @@ if __name__=='__main__':
 
     print(Pessoa.metodo_estatico(), luciano.metodo_estatico())
     print(Pessoa.nome_e_atributos_de_classe(), luciano.nome_e_atributos_de_classe())
+
+    pessoa = Pessoa('Anonimo')
+    pessoa2 = Homem(nome='Lilo')
+    print(isinstance(pessoa, Pessoa))#verifica se o objeto pertence a essa classe
+    print(isinstance(pessoa, Homem))
+    print(isinstance(pessoa2, Pessoa))
+    print(isinstance(pessoa2, Homem))

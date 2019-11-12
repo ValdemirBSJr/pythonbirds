@@ -100,10 +100,10 @@ class Carro:
         self.direcao = direcao
 
     def calcular_velocidade(self):
-        return self.motor.velocidade
+        return self.motor.velocidade #compos só pra retornar a velocidade
 
     def acelerar(self):
-        self.motor.acelerar()
+        self.motor.acelerar() #delega para a classe motor tratar os dados. isso se chama composicao
 
     def frear(self):
         self.motor.frear()
@@ -152,3 +152,12 @@ class Motor:
     def frear(self):
         self.velocidade -= 2
         self.velocidade = max(0, self.velocidade) #funcao max compara o valor do atributo e se for menor que 0, retorna o 0. No caso o menor valor
+
+motor = Motor()
+motor.acelerar()
+direcao = Direcao()
+print(direcao.valor)
+carro = Carro(direcao, motor)
+print(carro.calcular_direcao())
+print(carro.calcular_velocidade())
+
