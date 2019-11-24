@@ -12,7 +12,7 @@ class Pessoa:
         self.filhos = list(filhos)
 
     def cumprimentar(self):
-        return f'Olá {id(self)}'
+        return f'Olá, meu nome é: {self.nome}'
 
     #Para que um metodo independa do objeto que está sendo executado usa o decorator
     @staticmethod
@@ -26,7 +26,14 @@ class Pessoa:
         return f'{cls} - olhos: {cls.olhos}'
 
 class Homem(Pessoa):
-    pass
+    #como herdar metodo
+    def cumprimentar(self):
+        cumprimentar_da_classe_pai = super().cumprimentar()
+        return f'{cumprimentar_da_classe_pai}. Aperto de mão.'
+
+class Mutante(Pessoa):
+    olhos = 3
+    #para sobrescrever o atributo, basta por uma variavel com o mesmo nome
 
 if __name__=='__main__':
     p = Pessoa()
@@ -59,7 +66,7 @@ if __name__=='__main__':
     print(luciano.__dict__) #se mudar o valor, ele passa a pertebcer ao grupo de atributo
     print(id(Pessoa.olhos), id(luciano.olhos), id(renzo.olhos)) #O de luciaono agora é diferente
 
-    Pessoa.olhos = 3 #Agora todo mundo terá 3 olhos, menos luciano puq foi explicitado que ele tem 1
+    #Pessoa.olhos = 3 #Agora todo mundo terá 3 olhos, menos luciano puq foi explicitado que ele tem 1
 
     print(Pessoa.olhos)
     print(luciano.olhos)
@@ -73,3 +80,7 @@ if __name__=='__main__':
     print(isinstance(pessoa, Homem))
     print(isinstance(pessoa2, Pessoa))
     print(isinstance(pessoa2, Homem))
+    print(pessoa2.cumprimentar())
+
+    pessoa3 = Mutante(nome='Luis')
+    print(pessoa3.olhos)
